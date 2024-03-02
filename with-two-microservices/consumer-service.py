@@ -36,15 +36,10 @@ class Consume:
                 results = redis_.xreadgroup(group, key, {key: '>'}, None)
 
                 if results != []:
-                    print(results)
-
-                    # for result in results:
-                    #     obj = result[1][0][1]
-                    #     # order = Order.get(obj['pk'])
-                    #     # order.status = 'refunded'
-                    #     # order.save()
-                    #     # print(obj)
-                    #     pass
+                    for result in results:
+                        dict_data = result[1][0][1]
+                        print(dict_data)
+                       
                 else:
                     pass
 
