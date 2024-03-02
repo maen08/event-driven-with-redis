@@ -26,7 +26,7 @@ class RedisNetwork:
 
 
 class UserDataModel:
-    # save data in mysql db
+    # Eg. save data in mysql db
     db_connection = 'mysql_db'
     pass
 
@@ -78,6 +78,7 @@ class PublishUser:
         user.save()
 
 
+        # redis stream takes in dict data    
         redis = RedisNetwork
         redis.create_stream_data(
             key='user_created',

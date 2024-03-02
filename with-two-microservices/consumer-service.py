@@ -1,37 +1,59 @@
-import requests
-from faker import Faker
-from flask import Flask
-import json
+
 import time
+from redis_om import get_redis_connection
 
 # Microservice B - service for which needds to process user data in real-time 
 # Real-time means - as soon as user is created Eg. creating user ID card, etc.
+# No need to run a server in the consumer service - only run the file
 
-app = Flask(__name__)
 
-class Publish:
-    def create_user():
-        fake = Faker()
-        user = {
-            'name':fake.name(),
-            'phone': fake.phone_number(),
-            'job': fake.job(),
-            'address': fake.address()
-        }
-        user = json.dumps(user)
-        return user
-    
+key = 'user_created'
+group = 'user-id-card'
 
-    @app.post('/add-user')
-    def server_api_endpoint():
-        # Microservice A which creates users and save them in its own DB (assume mysql db and also it saves the event in redis).
-        # Other microservices assume B which want to process user information as soon as user is created.
-        # And thats where we use redis streaming between these two microservices.
-        # Why redis streaming ? - 
+
+class RedisNetwork:
+    def redis_connection():
+        redis = get_redis_connection(
+            host='127.0.0.1',
+            port=6370,
+            decode_responses=True
+        )
+        return redis
         
-        user_data = Publish.create_user()
-        return user_data
+    def create_stream_data_group():
+        try:
+            RedisNetwork.redis_connection().xgroup_create(key, group)
+        except:
+            print('group already exists')
 
 
-if __name__ == '__main__':
-    app.run(port=5000)
+class Consume:
+    def create_user_card():
+        # mimic the creation by adding characters on the user data
+        redis_ = RedisNetwork.redis_connection()
+        while True:
+            try:
+                results = redis_.xreadgroup(group, key, {key: '>'}, None)
+
+                if results != []:
+                    print(results)
+
+                    # for result in results:
+                    #     obj = result[1][0][1]
+                    #     # order = Order.get(obj['pk'])
+                    #     # order.status = 'refunded'
+                    #     # order.save()
+                    #     # print(obj)
+                    #     pass
+                else:
+                    pass
+
+            except Exception as e:
+                print(str(e))
+            time.sleep(0.2)
+
+
+
+RedisNetwork.create_stream_data_group()
+Consume.create_user_card()
+
