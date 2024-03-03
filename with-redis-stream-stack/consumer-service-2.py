@@ -2,13 +2,13 @@
 import time
 from redis_om import get_redis_connection
 
-# Microservice B - service for which needds to process user data in real-time 
-# Real-time means - as soon as user is created Eg. creating user ID card, etc.
+# Microservice C - service for which needs to process user data in real-time 
+# Real-time means - as soon as user is created Eg. creating roles automatically.
 # No need to run a server in the consumer service - only run the file
 
 
 key = 'user_created'
-group = 'user-id-card'
+group = 'user-role'
 
 
 class RedisNetwork:
@@ -28,7 +28,7 @@ class RedisNetwork:
 
 
 class Consume:
-    def create_user_card():
+    def create_user_role():
         # mimic the creation by adding characters on the user data
         redis_ = RedisNetwork.redis_connection()
         while True:
@@ -50,5 +50,5 @@ class Consume:
 
 
 RedisNetwork.create_stream_data_group()
-Consume.create_user_card()
+Consume.create_user_role()
 
