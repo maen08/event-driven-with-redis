@@ -13,7 +13,7 @@ app = Flask(__name__)
 class RedisNetwork:
     def redis_connection():
         redis = get_redis_connection(
-            host='127.0.0.1',
+            host='redis',
             port=6370,
             decode_responses=True
         )
@@ -88,4 +88,4 @@ class PublishUser:
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=5000, host="0.0.0.0")

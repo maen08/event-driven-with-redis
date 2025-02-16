@@ -1,0 +1,34 @@
+services:
+  producer:
+    build:
+      context: ./producer
+    container_name: producer
+    ports:
+      - "5000:5000"
+    networks:
+      - conn
+
+  consumer-1:
+    build:
+      context: ./consumer-1
+    container_name: consumer-1
+    networks:
+      - conn
+
+  consumer-2:
+    build:
+      context: ./consumer-2
+    container_name: consumer-2
+    networks:
+        - conn
+
+  redis:
+    image: redis
+    ports:
+      - "6370:6379"
+    networks:
+      - conn
+
+networks:
+  conn:
+    external: true

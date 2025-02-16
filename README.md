@@ -9,19 +9,19 @@ This project serves as a PoC in implementing EDA using Redis as Event Manager (B
 - Redis can make this happen with easy by streaming events.
 
 ```
-producer - service A
-consumer-1 - service B
-consumer-2 - service C
+producer   ==> service A
+consumer-1 ==> service B
+consumer-2 ==> service C
 
 ```
+
 
 ## Stack
 - Docker & Compose
 - Redis
-- Microservices (for this project, Flask was used)
+- Microservices eg. Python
 
 
-### Approach 01: Using Redis stack
 - Redis offers alot of features and functionalities but in this project we'll use it to tackle:
 1. Real-time data store
 - With this PoC it covers the scenario where real-time data are exchanged within microservices.
@@ -37,10 +37,21 @@ consumer-2 - service C
 - Can be complex to implement as a number of microservices increases
 - Easy to scale services horizontally 
 
-### Approach 02: Using Server Sent Events (SSE)
-With Server Sent Events (SSE) - Event Driven Architecture (EDA)
-- Suitable for few microservices interaction 
-- Complex to implement with multiple services
-- Easy to build and fast
-- Frontend client can consume data with SSE direct (no need for external tools like Redis)
-- Hard to scale
+```
+.
+├── consumer-1
+│   ├── consumer-service-1.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── consumer-2
+│   ├── consumer-service-2.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── docker-compose.yml
+├── Makefile
+└── producer
+    ├── Dockerfile
+    ├── publisher-service.py
+    └── requirements.txt
+
+```

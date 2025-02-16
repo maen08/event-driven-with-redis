@@ -14,7 +14,7 @@ group = 'user-role'
 class RedisNetwork:
     def redis_connection():
         redis = get_redis_connection(
-            host='127.0.0.1',
+            host='redis',
             port=6370,
             decode_responses=True
         )
