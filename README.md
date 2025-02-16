@@ -1,12 +1,23 @@
 # Event Driven Architecture (EDA) - Minimal 
-This project serves as boilerplate and PoC in implementing EDA using two different approaches: With Redis and with SSE
+This project serves as a PoC in implementing EDA using Redis as Event Manager (Broker)
 
 ![](https://images.ctfassets.net/9ijoq4ake70f/77eAY6nEWk7L2EDfymylL9/e6e740fb2d60ce953cd3c9b7ebf1fd2a/EDA-1.png)
+
+## PoV
+- Assume we have 3 microservices in our architecture and we want them to talk to each other.
+- There are so many ways to do that but lets explore the easiest approach which is realtime and fast. 
+- Redis can make this happen with easy by streaming events.
+
+```
+producer - service A
+consumer-1 - service B
+consumer-2 - service C
+
+```
 
 ## Stack
 - Docker & Compose
 - Redis
-- SSE library
 - Microservices (for this project, Flask was used)
 
 
