@@ -16,11 +16,13 @@ consumer-2 ==> service C
 ```
 
 
-## Stack
-- Docker & Compose
-- Redis
-- Microservices eg. Python
+## Components
+- Docker/Compose - package the service
+- Redis  - act as events manager (broker)
+- Microservices (eg. Python) - actual servies (any language)
 
+
+```
 
 - Redis offers alot of features and functionalities but in this project we'll use it to tackle:
 1. Real-time data store
@@ -30,6 +32,8 @@ consumer-2 ==> service C
 2. Streaming & messaging
 - The stream data type enables high-rate data ingestion, messaging, event sourcing, and notifications.
 - Ensure to miss no data from streaming services / APIs.
+
+```
 
 ## Project structure
  With redis streaming stack to exchage data on real time - Event Driven Architecture (EDA)
@@ -55,3 +59,18 @@ consumer-2 ==> service C
     └── requirements.txt
 
 ```
+
+### Run
+- Producer (service A)
+```
+
+
+```
+
+
+### Todo On Prod
+
+
+
+### Thanks
+- To me (maen08) 

@@ -12,12 +12,16 @@ app = Flask(__name__)
 
 class RedisNetwork:
     def redis_connection():
-        redis = get_redis_connection(
-            host='localhost',
-            port=6370,
-            decode_responses=True
-        )
-        return redis
+        try:
+            redis = get_redis_connection(
+                host='redis',
+                port=6379,
+                decode_responses=True
+            )
+            return redis
+        except:
+            print("Errors on connecting to redis server ...")
+            return
 
     def create_stream_data(key:str, data_object:dict):
         redis_ = RedisNetwork.redis_connection()
