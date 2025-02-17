@@ -44,19 +44,19 @@ consumer-2 ==> service C
 .
 ├── consumer-1
 │   ├── consumer-service-1.py
-│   ├── Dockerfile
 │   └── requirements.txt
 ├── consumer-2
 │   ├── consumer-service-2.py
-│   ├── Dockerfile
 │   └── requirements.txt
-├── docker-compose.yml
 ├── Makefile
-└── producer
-    ├── Dockerfile
-    ├── publisher-service.py
-    └── requirements.txt
+├── producer
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── publisher-service.py
+│   └── requirements.txt
+└── README.md
 
+4 directories, 10 files
 ```
 
 ### Run
