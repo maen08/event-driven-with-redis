@@ -40,6 +40,7 @@ consumer-2 ==> service C
 - Its suitable for multiple services (more than 2 microservices)
 - Can be complex to implement as a number of microservices increases
 - Easy to scale services horizontally 
+- Note: I've doceerize all services with a single compose file, in real scenario this is different
 
 ```
 .
@@ -61,15 +62,20 @@ consumer-2 ==> service C
 ```
 
 ### Run
-- Producer (service A)
 ```
+# run all services at once
+make run
 
+# destroy services
+make down
 
 ```
-
 
 ### Todo On Prod
-
+- Think of security and prod configs
+- Service authentication
+- Explore other redis configs eg. data caching 
+- Prod level deployment
 
 
 ### Thanks
