@@ -13,7 +13,7 @@ app = Flask(__name__)
 class RedisNetwork:
     def redis_connection():
         redis = get_redis_connection(
-            host='redis',
+            host='localhost',
             port=6370,
             decode_responses=True
         )
