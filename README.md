@@ -1,4 +1,4 @@
-# Event Driven Architecture (EDA) - Minimal 
+## Event Driven Architecture (EDA) - Minimal PoC
 This project serves as a PoC in implementing EDA using Redis as Event Manager (Broker)
 
 ![](https://images.ctfassets.net/9ijoq4ake70f/77eAY6nEWk7L2EDfymylL9/e6e740fb2d60ce953cd3c9b7ebf1fd2a/EDA-1.png)
