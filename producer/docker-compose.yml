@@ -10,23 +10,23 @@ services:
     depends_on:
       - redis
 
-  consumer-1:
-    build:
-      context: ./consumer-1
-    container_name: consumer-1
-    networks:
-      - conn
-    depends_on:
-      - redis
+  # consumer-1:
+  #   build:
+  #     context: ./consumer-1
+  #   container_name: consumer-1
+  #   networks:
+  #     - conn
+  #   depends_on:
+  #     - redis
 
-  consumer-2:
-    build:
-      context: ./consumer-2
-    container_name: consumer-2
-    networks:
-        - conn
-    depends_on:
-      - redis
+  # consumer-2:
+  #   build:
+  #     context: ./consumer-2
+  #   container_name: consumer-2
+  #   networks:
+  #       - conn
+  #   depends_on:
+  #     - redis
 
   redis:
     image: redis

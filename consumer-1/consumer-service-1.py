@@ -14,7 +14,7 @@ group = 'user-id-card'
 class RedisNetwork:
     def redis_connection():
         redis = get_redis_connection(
-            host='redis',
+            host='127.0.0.1',
             port=6379,
             decode_responses=True
         )

@@ -15,7 +15,6 @@ consumer-2 ==> service C
 
 ```
 
-
 ## Components
 - Docker/Compose - package the service
 - Redis  - act as events manager (broker)
@@ -40,7 +39,6 @@ consumer-2 ==> service C
 - Its suitable for multiple services (more than 2 microservices)
 - Can be complex to implement as a number of microservices increases
 - Easy to scale services horizontally 
-- Note: I've doceerize all services with a single compose file, in real scenario this is different
 
 ```
 .
@@ -62,14 +60,12 @@ consumer-2 ==> service C
 ```
 
 ### Run
-```
-# run all services at once
-make run
+- Run the producer service (service A) by running `make run` in the folder `producer`. It will run on `http://localhost:5000/`
+- Run consumers `consumer-2` and `consumer-2` by navigate into respective folders and run `python3 consumer-service-1.py`
+- Make sure you've installed all `requirements.txt`
+- Consumers in this PoC will stream data by printing them, so leave them running (listen for an event from producer)
+- Hint: you can build them separately as well
 
-# destroy services
-make down
-
-```
 
 ### Todo On Prod
 - Think of security and prod configs
