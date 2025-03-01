@@ -30,6 +30,7 @@ class RedisNetwork:
 class Consume:
     def create_user_role():
         # mimic the creation by adding characters on the user data
+        print("consumer 2 service running ...")
         redis_ = RedisNetwork.redis_connection()
         while True:
             try:

@@ -30,6 +30,7 @@ class RedisNetwork:
 class Consume:
     def create_user_card():
         # mimic the creation by adding characters on the user data
+        print("consumer 1 service running ...")
         redis_ = RedisNetwork.redis_connection()
         while True:
             try:
