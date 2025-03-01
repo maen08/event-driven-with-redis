@@ -2,7 +2,7 @@
 import time
 from redis_om import get_redis_connection
 
-# Microservice B - service for which needs to process user data in real-time 
+# Microservice B - service  which needs to process user data in real-time 
 # Real-time means - as soon as user is created Eg. creating user ID card, etc.
 # No need to run a server in the consumer service - only run the file
 
@@ -39,7 +39,8 @@ class Consume:
                 if results != []:
                     for result in results:
                         dict_data = result[1][0][1]
-                        print(dict_data)
+                        data = f"{dict_data["name"]} -- Get created -- User data consumer"
+                        print(data)
                        
                 else:
                     pass
