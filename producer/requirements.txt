@@ -1,8 +1,4 @@
-
-cryptography==42.0.5
-Faker==23.3.0
-Flask==3.0.2
-redis==4.6.0
-redis-om==0.2.1
-requests==2.31.0
-Werkzeug==3.0.1
+faker
+flask
+redis
+redis-om
